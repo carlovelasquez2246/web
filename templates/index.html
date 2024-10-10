@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADSIS DONOSTIA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+
+ 
+</head>
+<body>
+    <div class="tab-container">
+        <div class="tab active" onclick="openTab(event, 'acciones')">Acciones</div>
+        <div class="tab" onclick="openTab(event, 'personas')">Personas</div>
+    </div>
+
+    <div id="acciones" class="tab-content active">
+        <h1>CURSOS DISPONIBLES</h1>
+        <a class="Agregar" href="{{ url_for('add_curso') }}">AGREGAR CURSO  </a>
+        <a class="resumen" href="{{ url_for('resumen') }}">  RESUEMEN ADSIS  </a>
+        <a class="reportNacionalidad" href="{{ url_for('reportNacional') }}"> REPORTE POR NACIONALIDAD</a>
+        <br>
+        <table>
+            <tr>
+                <th>CODIGO</th>
+                <th>NOMBRE</th>
+                <th>CENTRO</th>
+                <th>SERVICIO</th>
+                <th>TIPO DE SERVICIO</th>
+                <th>FECHA DE INICIO</th>
+                <th>FECHA ENTRADA</th>
+                <th>TUTOR</th>
+                <th>ELIMINAR</th>
+                <th>EDITAR</th>
+            </tr>
+            {% for curso in cursos %}
+            <tr>
+                <td>{{ curso[0]}}</td>            
+                <td><a href="{{ url_for('listado', id=curso[0]) }}"> {{ curso[1]}} </a></td>            
+                <td>{{curso[2]}}</td>
+                <td>{{curso[3]}}</td>
+                <td>{{curso[4]}}</td>
+                <td>{{curso[5]}}</td>
+                <td>{{curso[6]}}</td>
+                <td>{{curso[7]}}</td>
+                <td>
+                    <form class="eliminar" method="post" action="{{ url_for('index') }}">
+                        <input type="hidden" name="id" value="{{ curso[0] }}" >
+                        <input type="submit" value=" ELIMINAR CURSO ">
+                    </form>   
+                </td>
+                <td><a class="editar" href="{{ url_for('edit_curso', id=curso[0]) }}">EDITAR CURSO</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div> 
+
+    <div id="personas" class="tab-content">
+        
+        <h1>ESTUDIANTES</h1>
+        <a class="Agregar" href="{{ url_for('inscribir') }}">INSCRIBIR ESTUDIANTE</a>
+        <br>
+        <table>
+            <tr>
+                <th>CODIGO</th>
+                <th>DNI</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO1</th>
+                <th>APELLIDO2</th>
+                <th>ELIMINAR</th>
+                <th>EDITAR</th>
+            </tr>
+            {% for alumno in estudiantes %}
+            <tr>
+                <td>{{alumno[0]}}</td>
+                <td>{{alumno[1]}}</td>
+                <td>  
+                    <div class="student-container">
+                    <!-- Name of the student -->
+                        <span class="student-name" data-id="{{ alumno[14] }}">{{ alumno[2] }}
+                        <!-- Placeholder for the student image -->
+                            <img class="student-photo" id="photo-{{ alumno[14] }}" src="" alt="Student photo">
+                        </span>
+                
+                    </div>
+                </td>
+                <td>{{alumno[3]}}</td>
+                <td>{{alumno[4]}}</td>
+
+                <td>
+                    <form method="post" action="{{ url_for('eliminar') }}">
+                        <input type="hidden" name="id" value="{{ alumno[0] }}" >
+                        <input type="hidden" name="foto" value="{{ alumno[14] }}">
+                        <input type="submit" value="ELIMINAR ESTUDIANTE">
+                    </form>   
+                </td>
+                <td><a class="editar" href="{{ url_for('edit_alumno', id=alumno[0]) }}">EDITAR ESTUDIANTE</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div> 
+   
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+
+            // Ocultar todos los contenidos de pestañas
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Remover la clase 'active' de todas las pestañas
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            // Mostrar el contenido actual y añadir clase 'active' a la pestaña seleccionada
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        /* PARA MOSTRAR LAS IMASGENES DEL REGISTRO */
+        document.querySelectorAll('.student-name').forEach(function (element) {
+            element.addEventListener('mouseover', function () {
+                var studentId = this.getAttribute('data-id');
+                
+                var photoElement = document.getElementById('photo-' + studentId);
+                var photoPath = 'static/fotos_Estudiantes/' + studentId; // Ajustar la ruta
+
+                photoElement.src = photoPath;
+                photoElement.style.display = 'block'; // Mostrar la foto
+            });
+
+            element.addEventListener('mouseout', function () {
+                var studentId = this.getAttribute('data-id');
+                // Hide the photo when the cursor moves out
+                document.getElementById('photo-' + studentId).style.display = 'none';
+            });
+        });
+    </script>
+
+</body>
+</html>    

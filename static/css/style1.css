@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #8AB334;
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+.actions button {
+    background-color: white;
+    color: #8AB334;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: 1px solid #8AB334;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.actions button.active {
+    background-color: #8AB334;
+    color: white;
+}
+
+.search-section {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-section input {
+    padding: 10px;
+    width: 250px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.search-btn, .clear-btn {
+    padding: 10px;
+    border: none;
+    background-color: #8AB334;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #8AB334;
+    color: white;
+}
+
+thead th {
+    padding: 15px;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+tbody td {
+    padding: 15px;
+    text-align: left;
+    text-align: center;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: 10px;
+}
+
+a {
+    text-align: center;
+    margin-top: 15px;
+    color: #8AB334;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    grid-column: span 2; /* Ocupa ambas columnas */
+}
+
+a:hover {
+    color: #74a706;
+}
+
+.editar {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    background-color: #117eec;
+    color: #f2f2f7;
+    text-decoration: none;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.editar:hover {
+    background-color: #0056b3;
+}
+
+
+
+input[type="submit"] {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+input[type="submit"]:hover {
+    background-color: #c82333;
+}

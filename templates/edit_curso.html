@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar curso</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css')}}">
+</head>
+<body>
+    <div class="grafic">
+        <h1>Editar curso</h1>
+    
+        <form action="{{ url_for('edit_curso',  id=curso[0]) }}" method="post">
+
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" value="{{ curso[1] }}" required>
+            
+
+            <label for="center">centro:</label>
+            <input type="text" id="center" name="center" value="{{ curso[2] }}" required>
+            
+
+            <label for="serviceinput">servicio:</label>
+            <input list="text" id="service" name="serviceinput" value="{{ curso[3] }}" required>
+            <datalist id="text">
+                <option value="Formación"></option>
+            </datalist>
+        
+
+            <label for="type_serviceinput">Tipo_Servicio:</label>
+            <input list="text1" id="type_serviceinput" name="type_serviceinput" value="{{ curso[4] }}" required>
+            <datalist id="text1">
+                <option value="Formación FP Básica"></option>
+            </datalist>
+
+            <label for="start_date">fecha_inicio:</label>
+            <input type="date" id="start_date" name="start_date" value="{{ curso[5] }}" required>
+           
+        
+            
+            <label for="entry_date">fecha_entrada:</label>
+            <input type="date" id="entry_date" name="entry_date" value="{{ curso[6] }}" required>
+            
+            
+            <label for="teacherinput">tutor:</label>
+            <input list="teacher" id="teacherinput" name="teacherinput" value="{{ curso[7] }}" required>
+            <datalist id="teacher">
+                <option value="1">Ana</option>
+                <option value="2">Luis</option>
+                <option value="3">Maria</option>
+                <option value="4">Carlos</option>
+                <option value="5">Laura</option>
+                <option value="6">Jorge</option>
+            </datalist> 
+
+            <button type="submit">Guardar</button>
+        </form>
+        <br>
+    
+        <a href="{{ url_for('index') }}">Volver a la lista de Cursos</a> 
+    </div>       
+</body>
+</html>

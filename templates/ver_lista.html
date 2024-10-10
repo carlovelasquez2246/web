@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADSIS DONOSTIA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+
+    
+
+    <div id="acciones">
+        <h1>LISTA DE ESTUDIANTES EN CURSO</h1>
+        <br>
+        <a href="{{ url_for('inscribir')}}">INSCRIBIR ESTUDIANTE</a> <a href="{{ url_for('index')}}">VOLVER ATRAS</a>
+        <br><br>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>CODIGO</th>
+                <th>DNI</th>
+                <th>NOMBRE</th>
+                <th>TELEFONO</th>
+                <th>ELIMINAR</th>
+                <th>ACCIONES</th>
+            </tr>
+            {% for curso in listar %}
+            <tr>
+                <td>{{curso[0]}}</td>
+                <td>{{curso[1]}}</td>
+                <td>{{curso[2]}}</td>
+                <td>    
+                    <div class="student-container">
+                    <!-- Name of the student -->
+                        <span class="student-name" data-id="{{ curso[5] }}"> {{ curso[3] }}
+                        <!-- Placeholder for the student image -->
+                            <img class="student-photo" id="photo-{{ curso[5] }}" src="" alt="Student photo">
+                        </span>
+                    </div>
+                </td>
+                <td>{{curso[4]}}</td>
+                <td>
+                    <form method="post" action="{{ url_for('eliminar_lista') }}">
+                        <input type="hidden" name="id" value="{{ curso[1] }}" >
+                        <input type="submit" value="ELIMINAR ESTUDIANTE">
+                    </form>  
+                </td>
+                    <td>
+                        <a class="editar" href="{{ url_for('edit_alumno', id=curso[1]) }}">EDITAR </a>
+                        <a class="descarga"href="{{ url_for('generar_pdf', id=curso[1]) }}">Descargar PDF</a>
+                    </td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+    </div> 
+    <script>
+        /* PARA MOSTRAR LAS IMASGENES DEL REGISTRO */
+        document.querySelectorAll('.student-name').forEach(function (element) {
+            element.addEventListener('mouseover', function () {
+                var studentId = this.getAttribute('data-id');
+                
+                var photoElement = document.getElementById('photo-' + studentId);
+                var photoPath = '/static/fotos_Estudiantes/' + studentId; // Ajustar la ruta
+
+                photoElement.src = photoPath;
+                photoElement.style.display = 'block'; // Mostrar la foto
+            });
+
+            element.addEventListener('mouseout', function () {
+                var studentId = this.getAttribute('data-id');
+                // Hide the photo when the cursor moves out
+                document.getElementById('photo-' + studentId).style.display = 'none';
+            });
+        });
+    </script>
+
+
+</body>
+</html>    

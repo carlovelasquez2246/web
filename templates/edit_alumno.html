@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Estudiante</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css')}}">
+</head>
+<body>
+    <div class="grafic">
+        <h1>Editar Estudiante</h1>
+    
+        <form action="{{ url_for('edit_alumno',  id=alumno[0]) }}" method="post" enctype="multipart/form-data">
+
+            <label for="dni">DNI:</label>
+            <input type="number" id="dni" name="dni" value="{{ alumno[1] }}" required>
+
+            <label for="name">  NOMBRE:</label>
+            <input type="text" id="name" name="name" value="{{ alumno[2] }}" required>
+            
+
+            <label for="last1">PRIMER APELLIDO:</label>
+            <input type="text" id="last1" name="last1" value="{{ alumno[3] }}" required>
+
+            <label for="last2">  SEGUNDO APELLIDO:</label>
+            <input type="text" id="last2" name="last2" value="{{ alumno[4] }}" required>
+            
+
+            <label for="date_birt">FECHA DE NACIMIETO:</label>
+            <input type="date" id="date_birt" name="date_birt" value="{{ alumno[5] }}" required>
+
+            <label for="email">  CORREO ELECTRONICO:</label>
+            <input type="email" id="email" name="email" value="{{ alumno[6] }}" required>
+            
+
+            <label for="sexinput">SEXO:</label>
+            <input list="sex" id="sexinput" name="sexinput" value="{{ alumno[7] }}" required>
+            <datalist id="sex">
+                <option value="Masculino"></option>
+                <option value="Femenino"></option>
+            </datalist>
+
+            <label for="type_idinput">TIPO DE DOCUMENTO:</label>
+            <input list="type_id" id="type_idinput" name="type_idinput" value="{{ alumno[8] }}" required>
+            <datalist id="type_id">
+                <option value="DNI"></option>
+                <option value="NIE"></option>
+                <option value="PASSPORT"></option>
+                <option value="OTHERS"></option>
+            </datalist> 
+            
+
+            <label for="ori_country">PAIS DE ORIGEN:</label>
+            <input type="text" id="ori_country" name="ori_country" value="{{ alumno[9] }}" required>
+
+            <label for="nationality">NACIONALIDAD:</label>
+            <input type="text" id="nationality" name="nationality" value="{{ alumno[10] }}" required>
+            
+
+            <label for="addres">DIRECCION:</label>
+            <input type="text" id="addres" name="addres" value="{{ alumno[11] }}" required>
+
+            <label for="cp">CODIGO PORSTAL:</label>
+            <input type="number" id="cp" name="cp" value="{{ alumno[12] }}" required>
+            
+
+            <label for="phont">TELEFONO:</label>
+            <input type="number" id="phont" name="phont" value="{{ alumno[13] }}" required>
+
+            <label for="gradeinput">NOTA:</label>
+            <input list="grade" id="gradeinput" name="gradeinput" value="{{ alumno[14] }}" required>
+            <datalist id="grade">
+                <option value="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+                <option value="4"></option>
+                <option value="5"></option>
+                <option value="6"></option>
+                <option value="7"></option>
+                <option value="8"></option>
+                <option value="9"></option>
+                <option value="10"></option>
+            </datalist>
+            
+
+            <label for="idcursoinput">CODIGO CURSO:</label>
+            <input list="idcurso" id="idcursoinput" name="idcursoinput" value="{{ alumno[15] }}" required>
+            <datalist id="idcurso">
+                <option value="1">Soldadura 1º</option>
+                <option value="2">Soldadura 2º</option>
+                <option value="3">Electricidad 1º</option>
+                <option value="4">Electricidad 2º</option>
+                <option value="5">Cocina y Restauración 1º</option>
+                <option value="6">Cocina y Restauración 2º</option>
+            </datalist>
+
+            <label for="registration_date">FECHA DE INSCRIPCION:</label>
+            <input type="date" id="registration_date" name="registration_date" value="{{ alumno[16] }}" required>
+            
+
+            <label for="foto">FOTO:</label>
+            <input type="text" id="foto" name="foto" value="{{ alumno[17] }}">
+            <input type="file" id="foto" name="foto" class="form-control-file" accept="image/*" >
+            
+
+            <button type="submit">Guardar</button>
+        </form>
+        <br>
+    
+        <a href="{{ url_for('index') }}">Volver a la lista de Estudiantes</a> 
+    </div>       
+</body>
+</html>

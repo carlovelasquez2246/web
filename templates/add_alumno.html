@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Estudiante</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css')}}">
+</head>
+<body>
+    <div class="grafic">
+        <h1>Agregar Estudiante</h1>
+    
+         <form action="{{ url_for('add_alumno')}}" method="POST" enctype="multipart/form-data">
+            <label for="dni">DNI:</label>
+            <input type="number" id="dni" name="dni" required>
+            <br><br>
+
+            <label for="name">NOMBRE:</label>
+            <input type="text" id="name" name="name" required>
+            <br><br>
+
+            <label for="last1">PRIMER APELLIDO:</label>
+            <input type="text" id="last1" name="last1" required>
+            <br><br>
+
+            <label for="last2">SEGUNDO APELLIDO:</label>
+            <input type="text" id="last2" name="last2" required>
+            <br><br>
+
+            <label for="date_birt">FECHA DE NACIMIETO:</label>
+            <input type="date" id="date_birt" name="date_birt" required>
+            <br><br>
+
+            <label for="email">CORREO ELECTRONICO:</label>
+            <input type="email" id="email" name="email" required>
+            <br><br>
+
+            <label for="sexinput">SEXO:</label>
+            <input list="sex" id="sexinput" name="sexinput" required>
+            <datalist id="sex">
+                <option value="Masculino"></option>
+                <option value="Femenino"></option>
+                Formación
+            </datalist>
+            <br><br>
+
+            <label for="type_id">TIPO DE DOCUMENTO:</label>
+            <input type="text" id="type_id" name="type_id" required>
+            <br><br>
+
+            <label for="ori_country">PAIS DE ORIGEN:</label>
+            <input type="text" id="ori_country" name="ori_country" required>
+            <br><br>
+
+            <label for="nationality">NACIONALIDAD:</label>
+            <input type="text" id="nationality" name="nationality" required>
+            <br><br>
+
+            <label for="addres">DIRECCION:</label>
+            <input type="text" id="addres" name="addres" required>
+            <br><br>
+
+            <label for="cp">CODIGO PORSTAL:</label>
+            <input type="number" id="cp" name="cp" required>
+            <br><br>
+
+            <label for="phont">TELEFONO:</label>
+            <input type="number" id="phont" name="phont" required>
+            <br><br>
+            
+            <label for="foto">FOTO DEL ESTUDIANTE</label>
+            <input type="file" name="foto" class="form-control-file" accept="image/*" >
+
+            <br><br>
+
+            <button type="submit">Añadir</button>
+        </form>
+        <br>
+        <a href="{{ url_for('index')}}">Volver a la lista de Estudiantes</a>
+    </div>        
+</body>
+</html>
+

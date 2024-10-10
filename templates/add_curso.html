@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Curso</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css')}}">
+</head>
+<body>
+    <div class="grafic">
+        <h1>Agregar Curso</h1>
+    
+         <form action="{{ url_for('add_curso')}}" method="post">
+            <label for="name">NOMBRE DEL CURSSO:</label>
+            <input type="text" id="name" name="name" required>
+            
+
+            <label for="name">CENTRO:</label>
+            <input type="text" id="center" name="center" required>
+            
+
+            <label for="nserviceinput">SERVICIO:</label>
+            <input list="text" id="serviceinput" name="serviceinput" required>
+            <datalist id="text">
+                <option value="Formación"></option>
+            </datalist>
+            
+            <label for="type_serviceinput">TIPO SERVICIO:</label>
+            <input list="text1" id="type_serviceinput" name="type_serviceinput" required>
+            <datalist id="text1">
+                <option value="Formación FP Básica"></option>
+            </datalist>
+            
+
+            <label for="name">FECHA INICIO:</label>
+            <input type="date" id="start_date" name="start_date" required>
+            
+
+            <label for="name">FECHA ENTTRADA:</label>
+            <input type="date" id="entry_date" name="entry_date" required>
+            
+
+            <label for="teacherinput">TUTOR:</label>
+            <input list="teacher" id="teacherinput" name="teacherinput" required>
+            <datalist id="teacher">
+                <option value="1">Ana</option>
+                <option value="2">Luis</option>
+                <option value="3">Maria</option>
+                <option value="4">Carlos</option>
+                <option value="5">Laura</option>
+                <option value="6">Jorge</option>
+            </datalist>
+            
+            <button type="submit">Añadir</button>
+        </form>
+        <br>
+        <a href="{{ url_for('index')}}">Volver a la lista de Cursos</a>
+    </div>        
+</body>
+</html>
+
