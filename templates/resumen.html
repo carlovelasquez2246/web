@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADSIS DONOSTIA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css')}}">
+
+
+    <div id="acciones" class="tab-content active">
+        <h1>RESUMEN DE ALUMNOS ADSIS</h1>
+    
+        <br>
+        <table>
+            <tr>
+                <th>CURSOS</th>
+                <th>T.ALUM</th>
+                <th>T.MUJ</th>
+                <th>15YY</th>
+                <th>15MUJ</th>
+                <th>16YY</th>
+                <th>16MUJ</th>
+                <th>17YY</th>
+                <th>17MUJ</th>
+                <th>18YY</th>
+                <th>18MUJ</th>
+                <th>19YY</th>
+                <th>19MUJ</th>
+                <th>20YY</th>
+                <th>20MUJ</th>
+                <th>21YY</th>
+                <th>21MUJ</th>
+                <th>22YY</th>
+                <th>22MUJ</th>
+            </tr>
+            {% for curso in resumen %}
+            <tr>
+                <td>{{curso[0]}}</td>            
+                <td>{{curso[1]}}</td>            
+                <td>{{curso[2]}}</td>
+                <td>{{curso[3]}}</td>
+                <td>{{curso[4]}}</td>
+                <td>{{curso[5]}}</td>
+                <td>{{curso[6]}}</td>
+                <td>{{curso[7]}}</td>
+                <td>{{curso[8]}}</td>
+                <td>{{curso[9]}}</td>
+                <td>{{curso[10]}}</td>
+                <td>{{curso[11]}}</td>
+                <td>{{curso[12]}}</td>
+                <td>{{curso[13]}}</td>
+                <td>{{curso[14]}}</td>
+                <td>{{curso[15]}}</td>
+                <td>{{curso[16]}}</td>
+                <td>{{curso[17]}}</td>
+                <td>{{curso[18]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ url_for('index') }}">Volver a la lista de cursos</a> 
+    </div> 

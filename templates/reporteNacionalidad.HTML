@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADSIS DONOSTIA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css')}}">
+
+    <div id="acciones" class="tab-content active">
+        <h1>RESUMEN DE ALUMNOS ADSIS</h1>
+    
+        <br>
+        <table>
+            <tr>
+                <th>NACIONALIDAD</th>
+                <th>T.ALUMNOS</th>
+                <th>T.MUJERES</th>
+                <th>1er CURSO</th>
+                <th>MUJ 1er CURSO</th>
+                <th>2º CURSO</th>
+                <th>MUJ 2º CURSO</th>
+               
+               
+            </tr>
+            {% for nacional in nacionalidad %}
+            <tr>
+                <td>{{nacional[0]}}</td>            
+                <td>{{nacional[1]}}</td>            
+                <td>{{nacional[2]}}</td>
+                <td>{{nacional[3]}}</td>
+                <td>{{nacional[4]}}</td>
+                <td>{{nacional[5]}}</td>
+                <td>{{nacional[6]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ url_for('index') }}">Volver a la lista de cursos</a> 
+    </div> 
